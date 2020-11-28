@@ -9,11 +9,14 @@
 
 <h1>Todo!</h1>
 
-<div class="todo_add">
-    <button onclick="add()">Добавь задачу</button>
-</div>
-
-<div id="todo"><p></p></div>
+<form class="todo">
+    <input type="checkbox" class="todo_check">
+    <input type="text" id="todo_text">
+    <button class="todo_save" onclick="save('todo_text');">Сохранить</button>
+    <button class="todo_edit">Редактировать</button>
+    <button class="todo_delete">Удалить</button>
+    <p id="new_todo"></p>
+</form>
 
 </body>
 </html>
