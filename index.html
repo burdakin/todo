@@ -9,14 +9,17 @@
 
 <h1>Todo!</h1>
 
-<form class="todo">
-    <input type="checkbox" class="todo_check">
+<form class="todo" onsubmit="return false">
+    <!-- <input type="checkbox" class="todo_check"> -->
     <input type="text" id="todo_text">
-    <button class="todo_save" onclick="save('todo_text');">Сохранить</button>
-    <button class="todo_edit">Редактировать</button>
-    <button class="todo_delete">Удалить</button>
+    <!-- <button class="todo_save" onclick="save('todo_text');">Сохранить</button> -->
+    <button class="todo_save" onclick="add_to_array()">Сохранить</button>
+    <!-- <button class="todo_edit">Редактировать</button> -->
+    <button class="todo_delete" onclick="delete_todo()">Удалить</button>
     <p id="new_todo"></p>
 </form>
+
+
 
 </body>
 </html>
