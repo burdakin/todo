@@ -25,6 +25,7 @@ function delete_todo() {
     render()
 }
 
+
 /*function save(id_name) {
     let todo_in_text = document.getElementById(id_name).value;
     let new_todo = document.createElement('div');
