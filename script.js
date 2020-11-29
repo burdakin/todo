@@ -13,8 +13,11 @@ function render (){
     let new_todo = document.createElement('div');
     new_todo.className = 'new_todo';
     for (let i=0; i<todo_array.length; i++) {
-        let array_data_id = JSON.stringify(todo_array[i]);
-        new_todo.innerHTML = '<b>' + array_data_id + '</b>';
+        let new_todo = document.createElement('div');
+        new_todo.className = 'new_todo';
+        let array_data_id = todo_array[i].id_num;
+        let array_data_text = todo_array[i].todo_parse;
+        new_todo.innerHTML = '<b>' + array_data_id + ': ' + array_data_text + '</b>';
         document.body.append(new_todo);
     }
 }
@@ -22,7 +25,7 @@ function render (){
 function delete_todo() {
     alert('э, ты чё?');
     let delete_num = +prompt('какой номер задачи ты хочешь удалить?');
-    delete todo_array[delete_num];
+    todo_array.splice(delete_num,1);
     render()
 }
 
