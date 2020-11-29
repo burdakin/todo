@@ -9,9 +9,10 @@ function add_to_array() {
 }
 
 function render (){
+    delete_old_render()
     let new_todo = document.createElement('div');
     new_todo.className = 'new_todo';
-    for (i=0; i<=todo_array.length-1; i++) {
+    for (let i=0; i<todo_array.length; i++) {
         let array_data_id = JSON.stringify(todo_array[i]);
         new_todo.innerHTML = '<b>' + array_data_id + '</b>';
         document.body.append(new_todo);
@@ -25,6 +26,12 @@ function delete_todo() {
     render()
 }
 
+
+function delete_old_render() {
+    document.querySelectorAll('.new_todo').forEach(function (a) {
+    a.remove();
+    })
+}
 
 /*function save(id_name) {
     let todo_in_text = document.getElementById(id_name).value;
