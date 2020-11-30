@@ -1,0 +1,31 @@
+body {
+    width: 800px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+
+    width: 400px;
+    margin: 0 auto;
+}
+
+input {
+    width: 100%;
+}
+
+.new_todo {
+    color: red;
+    text-align: center;
+}
+
+button {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
