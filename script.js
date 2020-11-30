@@ -32,8 +32,20 @@ function delete_todo() {
 
 function delete_old_render() {
     document.querySelectorAll('.new_todo').forEach(function (a) {
-    a.remove();
-    })
+    a.remove();}
+    )
+}
+
+function edit_todo() {
+    let edit_num = +prompt('какой номер хочешь исправить?');
+    let edit_todo = todo_array[edit_num].todo_parse;
+    let edit_new_todo = prompt('введи новую задачу вместо ' + edit_todo);
+    //вот здесь не знаю, нужно ли это, но вставил на всякий случай, чтобы имена переменных и ключи объектов совпали//
+    let id_num = edit_num;
+    let todo_parse = edit_new_todo;
+    delete todo_array[edit_num];
+    todo_array.splice(edit_num,1,{id_num,todo_parse});
+    render();
 }
 
 /*function save(id_name) {
