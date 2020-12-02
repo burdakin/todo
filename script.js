@@ -68,6 +68,12 @@ function render_from_storage() {
     }
 }
 
+function lstorage_clr() {
+    delete_old_render();
+    window.localStorage.clear();
+}
+
+
 
 /*function save(id_name) {
     let todo_in_text = document.getElementById(id_name).value;
