@@ -6,12 +6,11 @@ function add_to_array() {
     let id_num = array_id++;
     todo_array.push({id_num,todo_parse});
     render();
+    storage();
 }
 
 function render (){
     delete_old_render()
-    let new_todo = document.createElement('div');
-    new_todo.className = 'new_todo';
     for (let i=0; i<todo_array.length; i++) {
         let new_todo = document.createElement('div');
         new_todo.className = 'new_todo';
@@ -26,7 +25,8 @@ function delete_todo() {
     alert('э, ты чё?');
     let delete_num = +prompt('какой номер задачи ты хочешь удалить?');
     todo_array.splice(delete_num,1);
-    render()
+    render();
+    storage();
 }
 
 
@@ -46,7 +46,27 @@ function edit_todo() {
     delete todo_array[edit_num];
     todo_array.splice(edit_num,1,{id_num,todo_parse});
     render();
+    storage();
 }
+
+function storage() {
+    let store_todo = JSON.stringify(todo_array);
+    localStorage.setItem('todo_list',store_todo);
+}
+
+function render_from_storage() {
+    todo_array = (JSON.parse(window.localStorage.getItem('todo_list')));
+    //Сюда вставил кусок кода из render(), так как выпадала ошибка из-за функции удаления//
+    for (let i=0; i<todo_array.length; i++) {
+        let new_todo = document.createElement('div');
+        new_todo.className = 'new_todo';
+        let array_data_id = todo_array[i].id_num;
+        let array_data_text = todo_array[i].todo_parse;
+        new_todo.innerHTML = '<b>' + array_data_id + ': ' + array_data_text + '</b>';
+        document.body.append(new_todo);
+    }
+}
+
 
 /*function save(id_name) {
     let todo_in_text = document.getElementById(id_name).value;
