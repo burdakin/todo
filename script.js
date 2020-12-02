@@ -87,4 +87,3 @@ function lstorage_clr() {
     delete_old_render();
     window.localStorage.clear();
 }
-
