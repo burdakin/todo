@@ -11,12 +11,13 @@ function add_to_array() {
 
 function render (){
     delete_old_render()
+    array_id = 1;
     for (let i=0; i<todo_array.length; i++) {
         let new_todo = document.createElement('div');
         new_todo.className = 'new_todo';
-        let array_data_id = todo_array[i].id_num;
+        /*let array_data_id = todo_array[i].id_num;*/
         let array_data_text = todo_array[i].todo_parse;
-        new_todo.innerHTML = '<b>' + array_data_id + ': ' + array_data_text + '</b>';
+        new_todo.innerHTML = '<b>' + array_id++ + ': ' + array_data_text + '</b>';
         document.body.append(new_todo);
     }
 }
@@ -60,9 +61,9 @@ function render_from_storage() {
     for (let i=0; i<todo_array.length; i++) {
         let new_todo = document.createElement('div');
         new_todo.className = 'new_todo';
-        let array_data_id = todo_array[i].id_num;
+        /*let array_data_id = todo_array[i].id_num;*/
         let array_data_text = todo_array[i].todo_parse;
-        new_todo.innerHTML = '<b>' + array_data_id + ': ' + array_data_text + '</b>';
+        new_todo.innerHTML = '<b>' + array_id++ + ': ' + array_data_text + '</b>';
         document.body.append(new_todo);
     }
 }
