@@ -1,5 +1,6 @@
 var todo_array = [];
 var array_id = 0;
+var old_render_length = 0;
 
 function add_to_array() {
     let todo_parse = document.getElementById('todo_text').value;
@@ -16,24 +17,22 @@ function render (){
         let new_todo = document.createElement('div');
         new_todo.className = 'new_todo';
         let array_data_id = todo_array[i].id_num;
+        new_todo.id = array_data_id;
         let array_data_text = todo_array[i].todo_parse;
         new_todo.innerHTML = '<b>' + array_id++ + ': ' + array_data_text + '</b>';
         document.body.append(new_todo);
+        add_del_btn(array_data_id);
     }
 }
 
-function delete_todo() {
-    alert('э, ты чё?');
-    let delete_num = +prompt('какой номер задачи ты хочешь удалить?');
-    todo_array.splice(delete_num-1,1);
-    render();
-    storage();
-}
 
 function delete_old_render() {
-    document.querySelectorAll('.new_todo').forEach(function (a) {
-    a.remove();}
-    )
+    for (let i = 0; i < todo_array.length; i++) {
+        document.querySelectorAll('.new_todo').forEach(function (a) {
+                a.remove();
+            }
+        )
+    }
 }
 
 function edit_todo() {
@@ -59,13 +58,15 @@ function render_from_storage() {
     array_id = 1;
     if (todo_array !== null) {
         //Сюда вставил кусок кода из render(), так как выпадала ошибка из-за функции удаления старого рендера//
-        for (let i = 0; i < todo_array.length; i++) {
+        for (let i=0; i<todo_array.length; i++) {
             let new_todo = document.createElement('div');
             new_todo.className = 'new_todo';
             let array_data_id = todo_array[i].id_num;
+            new_todo.id = array_data_id;
             let array_data_text = todo_array[i].todo_parse;
             new_todo.innerHTML = '<b>' + array_id++ + ': ' + array_data_text + '</b>';
             document.body.append(new_todo);
+            add_del_btn(array_data_id);
         }
     } else {
         todo_array = []
@@ -73,12 +74,33 @@ function render_from_storage() {
 }
 
 function lstorage_clr() {
-    delete_old_render();
+    for (let i = 0; i < todo_array.length; i++) {
+        document.querySelectorAll('.new_todo').forEach(function (a) {
+                a.remove();
+            }
+        )
+    };
     window.localStorage.clear();
     todo_array = [];
+    render();
 }
 
-/* Здесь мои потуги сделать функции для добавления кнопок
+function add_del_btn(num) {
+    let new_del_btn = document.createElement('button');
+    new_del_btn.value = "delete!";
+    new_del_btn.innerHTML = 'oodalee'
+    new_del_btn.id = 'del_btn';
+    //new_del_btn.onclick = delete_todo(document.getElementById('num'));//
+    document.getElementById(num).append(new_del_btn);
+}
+
+function delete_todo(del_num) {
+    todo_array.splice(del_num,1);
+    render();
+    storage();
+}
+
+/* ненужное
 
 function add_del_btn(num) {
     let todo_num = num;
@@ -105,6 +127,14 @@ function render (){
 function delete_todo(num) {
     alert('э, ты чё?');
     todo_array.splice(num,1);
+    render();
+    storage();
+}
+
+function delete_todo() {
+    alert('э, ты чё?');
+    let delete_num = +prompt('какой номер задачи ты хочешь удалить?');
+    todo_array.splice(delete_num-1,1);
     render();
     storage();
 }
