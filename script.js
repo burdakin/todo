@@ -108,5 +108,4 @@ function delete_todo(num) {
     render();
     storage();
 }
-
 */
