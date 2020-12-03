@@ -1,6 +1,5 @@
 var todo_array = [];
 var array_id = 0;
-var old_render_length = 0;
 
 function add_to_array() {
     let todo_parse = document.getElementById('todo_text').value;
