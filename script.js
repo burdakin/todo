@@ -25,7 +25,7 @@ function render (){
 function delete_todo() {
     alert('э, ты чё?');
     let delete_num = +prompt('какой номер задачи ты хочешь удалить?');
-    todo_array.splice(delete_num,1);
+    todo_array.splice(delete_num-1,1);
     render();
     storage();
 }
