@@ -8,6 +8,9 @@ body {
 h1 {
     text-align: center;
     color: #eaea6b;
+    font-family: "Roboto Light";
+    font-weight: bolder;
+    font-size: 50px;
 }
 
 form {
