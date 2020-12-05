@@ -153,14 +153,16 @@ function add_check(num) {
 
 function add_to_done(num) {
     let index = todo_array.findIndex(i => i.id_num === num);
+    let id_done = num;
     let text_done = todo_array[index].todo_parse;
-    done_array.push({index, text_done});
+    done_array.push({id_done, text_done});
     //засунуть в другую функцию или переделать старую под параметр//
     let store_todo = JSON.stringify(done_array);
     localStorage.setItem('done_list', store_todo);
+    //рендерим//
     let done = document.createElement('div');
     done.className = 'done';
-    let array_data_id = done_array[num].id_done;
+    let array_data_id = done_array[done_array.length-1].id_done;
     done.id = array_data_id;
     let array_data_text = done_array[num].text_done;
     done.innerHTML = '<b>' + index + ': ' + array_data_text + '</b>';
