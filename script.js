@@ -15,9 +15,9 @@ function add_to_array() {
     }
 }
 
-function render (){
+function render() {
     delete_old_render()
-    for (let i=0; i<todo_array.length; i++) {
+    for (let i = 0; i < todo_array.length; i++) {
         let new_todo = document.createElement('div');
         new_todo.className = 'new_todo';
         let array_data_id = todo_array[i].id_num;
@@ -33,26 +33,22 @@ function render (){
 
 
 function delete_old_render() {
-    for (let i = 0; i < todo_array.length; i++) {
-        document.querySelectorAll('.new_todo').forEach(function (a) {
-                a.remove();
-            }
-        )
-    }
+    document.querySelectorAll('.new_todo').forEach(function (a) {
+            a.remove();
+        }
+    )
 }
-
 
 function storage() {
     let store_todo = JSON.stringify(todo_array);
-    localStorage.setItem('todo_list',store_todo);
+    localStorage.setItem('todo_list', store_todo);
 }
 
 function render_from_storage() {
     todo_array = (JSON.parse(window.localStorage.getItem('todo_list')));
     array_id = 1;
     if (todo_array !== null) {
-        //Сюда вставил кусок кода из render(), так как выпадала ошибка из-за функции удаления старого рендера//
-        for (let i=0; i<todo_array.length; i++) {
+        for (let i = 0; i < todo_array.length; i++) {
             let new_todo = document.createElement('div');
             new_todo.className = 'new_todo';
             let array_data_id = todo_array[i].id_num;
@@ -67,7 +63,7 @@ function render_from_storage() {
         }
     } else {
         todo_array = []
-        }
+    }
 }
 
 function lstorage_clr() {
@@ -76,7 +72,8 @@ function lstorage_clr() {
                 a.remove();
             }
         )
-    };
+    }
+    ;
     window.localStorage.clear();
     todo_array = [];
     array_id = 1;
@@ -88,63 +85,50 @@ function add_del_btn(num) {
     new_del_btn.value = "delete";
     new_del_btn.id = 'del_btn';
     new_del_btn.className = 'del_btn';
-    new_del_btn.setAttribute('onclick', 'delete_todo'+'(' + num + ')');
+    new_del_btn.setAttribute('onclick', 'delete_todo' + '(' + num + ')');
     new_del_btn.innerHTML = 'Удалить'
     document.getElementById(num).append(new_del_btn);
 }
 
 function delete_todo(del_num) {
-    todo_array.splice(del_num,1);
+    let index = todo_array.findIndex(i => i.id_num === del_num);
+    todo_array.splice(index, 1);
     array_id = 0;
     render();
     storage();
 }
 
-function edit_todo() {
-    let edit_num = +prompt('какой номер хочешь исправить?');
-    let edit_todo = todo_array[edit_num].todo_parse;
-    let edit_new_todo = prompt('введи новую задачу вместо ' + edit_todo);
-    //вот здесь не знаю, нужно ли это, но вставил на всякий случай, чтобы имена переменных и ключи объектов совпали//
-    let id_num = edit_num;
-    let todo_parse = edit_new_todo;
-    delete todo_array[edit_num];
-    todo_array.splice(edit_num, 1, {id_num, todo_parse});
-    render();
-    storage();
-}
-
-
 function add_edit_btn(num) {
     let new_edit_btn = document.createElement('button');
     new_edit_btn.value = "edit";
-    new_edit_btn.id = 'edit_btn'+num;
+    new_edit_btn.id = 'edit_btn' + num;
     new_edit_btn.className = 'edit_btn';
-    new_edit_btn.setAttribute('onclick', 'edit_todo1'+'(' + num + ')');
+    new_edit_btn.setAttribute('onclick', 'edit_todo' + '(' + num + ')');
     new_edit_btn.innerHTML = 'Редактировать'
     document.getElementById(num).append(new_edit_btn);
 }
 
-function edit_todo1(num) {
+function edit_todo(num) {
     let edit_input = document.createElement("input");
     edit_input.placeholder = 'отредактируйте задачу';
     edit_input.className = 'edit_input';
-    edit_input.id = ('edit_input'+num);
-    edit_input.setAttribute(onsubmit, 'edit_input_close' + '(' + num + ')'); //изменить название функции//
+    edit_input.id = ('edit_input' + num);
+    edit_input.setAttribute(onsubmit, 'edit_input_close' + '(' + num + ')');
     document.getElementById(num).append(edit_input);
-    let edit_btn = document.getElementById('edit_btn'+num);
-    edit_btn.setAttribute('onclick', 'edit_input_close('+ num + ')')
-
-
+    let edit_btn = document.getElementById('edit_btn' + num);
+    edit_btn.setAttribute('onclick', 'edit_input_close(' + num + ')')
 }
 
 function edit_input_close(num) {
-    let edit_close = document.getElementById('edit_input'+num);
+    let index = todo_array.findIndex(i => i.id_num === num);
+    let old_todo_text = todo_array[index].todo_parse;
+    let old_todo_id = todo_array[index].id_num;
+    let edited_todo = ({id_num: old_todo_id, todo_parse: document.getElementById('edit_input' + num).value});
+    todo_array.splice(index, 1, edited_todo);
+    let edit_close = document.getElementById('edit_input' + num);
     edit_close.remove();
-    let edit_btn = document.getElementById('edit_btn'+num);
-    edit_btn.setAttribute('onclick', 'edit_todo1'+'(' + num + ')')
-    /*render();
+    let edit_btn = document.getElementById('edit_btn' + num);
+    edit_btn.setAttribute('onclick', 'edit_todo' + '(' + num + ')')
+    render();
     storage();
-     */
 }
-
-/*функция для получения текста и id по индексу массива, вставки текста в placeholder инпута, замены его в массиве*/
