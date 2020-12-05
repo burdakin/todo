@@ -1,4 +1,5 @@
 var todo_array = [];
+var done_array = [];
 var array_id = 1;
 var del_num = 0;
 
@@ -28,6 +29,7 @@ function render() {
         document.getElementById('results').append(new_todo);
         add_del_btn(del_num);
         add_edit_btn(del_num);
+        add_check(del_num);
     }
 }
 
@@ -60,6 +62,7 @@ function render_from_storage() {
             array_id = array_data_id;
             add_del_btn(del_num);
             add_edit_btn(del_num);
+            add_check(del_num);
         }
     } else {
         todo_array = []
@@ -72,8 +75,14 @@ function lstorage_clr() {
                 a.remove();
             }
         )
-    }
-    ;
+    };
+    for (let i = 0; i < done_array.length; i++) {
+        document.querySelectorAll('.done').forEach(function (a) {
+                a.remove();
+            }
+        )
+    };
+
     window.localStorage.clear();
     todo_array = [];
     array_id = 1;
@@ -131,4 +140,30 @@ function edit_input_close(num) {
     edit_btn.setAttribute('onclick', 'edit_todo' + '(' + num + ')')
     render();
     storage();
+}
+
+function add_check(num) {
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'check' + num;
+    checkbox.className = 'checkbox';
+    checkbox.setAttribute('onclick', 'add_to_done(' + num + ')');
+    document.getElementById(num).append(checkbox);
+}
+
+function add_to_done(num) {
+    let index = todo_array.findIndex(i => i.id_num === num);
+    let text_done = todo_array[index].todo_parse;
+    done_array.push({index, text_done});
+    //засунуть в другую функцию или переделать старую под параметр//
+    let store_todo = JSON.stringify(done_array);
+    localStorage.setItem('done_list', store_todo);
+    let done = document.createElement('div');
+    done.className = 'done';
+    let array_data_id = done_array[num].id_done;
+    done.id = array_data_id;
+    let array_data_text = done_array[num].text_done;
+    done.innerHTML = '<b>' + index + ': ' + array_data_text + '</b>';
+    document.getElementById('done').append(done);
+    delete_todo(num);
 }

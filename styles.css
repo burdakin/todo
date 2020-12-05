@@ -8,7 +8,7 @@ body {
 h1 {
     text-align: center;
     color: #eaea6b;
-    font-family: "Roboto Light";
+    font-family: syne;
     font-weight: bolder;
     font-size: 50px;
 }
@@ -18,7 +18,7 @@ form {
     margin: 0 auto;
 }
 
-input {
+.todo_text{
     width: 100%;
 }
 
@@ -70,4 +70,22 @@ button {
     left: 1043px;
     width: 300px;
     height: 36px;
+}
+
+.checkbox {
+    position: absolute;
+    left: 440px;
+    margin-top: 14px;
+}
+
+#done {
+    width: 570px;
+    margin: 0 auto;
+    background-color: white;
+    opacity: 40%;
+    position: relative;
+    top: 50px;
+    padding-left: 30px;
+    padding-top: 20px;
+    text-decoration: line-through;
 }

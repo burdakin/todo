@@ -11,19 +11,14 @@
 <h1>Todo!</h1>
 <div class="input_container">
     <form class="todo" onsubmit="return false">
-        <!-- <input type="checkbox" class="todo_check"> -->
-        <input type="text" id="todo_text" placeholder="Введите задачу..."><br>
+        <input type="text" class="todo_text" id="todo_text" placeholder="Введите задачу..."><br>
         <button class="todo_save" onclick="add_to_array()">Сохранить</button>
-        <!--<button class="todo_delete" onclick="delete_todo()">Удалить</button>-->
-        <!-- <button class="edit" onclick="edit_todo()">Редактировать</button> -->
         <button class="clear_list" onclick="lstorage_clr()">Стереть список</button>
     </form>
 </div>
 
-<div id="results">
-
-</div>
-
+<div id="results"></div>
+<div id="done"></div>
 
 </body>
 </html>
