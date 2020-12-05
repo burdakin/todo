@@ -1,5 +1,5 @@
 var todo_array = [];
-var array_id = 0;
+var array_id = 1;
 var del_num = 0;
 
 function add_to_array() {
@@ -75,6 +75,7 @@ function lstorage_clr() {
     };
     window.localStorage.clear();
     todo_array = [];
+    array_id = 1;
     render();
 }
 
