@@ -75,13 +75,15 @@ function lstorage_clr() {
                 a.remove();
             }
         )
-    };
+    }
+    ;
     for (let i = 0; i < done_array.length; i++) {
         document.querySelectorAll('.done').forEach(function (a) {
                 a.remove();
             }
         )
-    };
+    }
+    ;
 
     window.localStorage.clear();
     todo_array = [];
@@ -159,12 +161,11 @@ function add_to_done(num) {
     //засунуть в другую функцию или переделать старую под параметр//
     let store_todo = JSON.stringify(done_array);
     localStorage.setItem('done_list', store_todo);
-    //рендерим//
     let done = document.createElement('div');
     done.className = 'done';
-    let array_data_id = done_array[done_array.length-1].id_done;
+    let array_data_id = done_array[done_array.length - 1].id_done;
     done.id = array_data_id;
-    let array_data_text = done_array[num].text_done;
+    let array_data_text = done_array[done_array.length - 1].text_done;
     done.innerHTML = '<b>' + index + ': ' + array_data_text + '</b>';
     document.getElementById('done').append(done);
     delete_todo(num);
