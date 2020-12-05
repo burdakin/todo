@@ -23,6 +23,7 @@ function render (){
         new_todo.innerHTML = '<b>' + array_data_id++ + ': ' + array_data_text + '</b>';
         document.body.append(new_todo);
         add_del_btn(del_num);
+        add_edit_btn(del_num);
     }
 }
 
@@ -77,11 +78,20 @@ function lstorage_clr() {
 
 function add_del_btn(num) {
     let new_del_btn = document.createElement('button');
-    new_del_btn.value = "delete!";
+    new_del_btn.value = "delete";
     new_del_btn.id = 'del_btn';
     new_del_btn.setAttribute('onclick', 'delete_todo'+'(' + num + ')');
     new_del_btn.innerHTML = 'oodalee'
     document.getElementById(num).append(new_del_btn);
+}
+
+function add_edit_btn(num) {
+    let new_edit_btn = document.createElement('button');
+    new_edit_btn.value = "edit";
+    new_edit_btn.id = 'edit_btn';
+    //new_edit_btn.setAttribute('onclick', 'edit_todo'+'(' + num + ')');//
+    new_edit_btn.innerHTML = 'edit'
+    document.getElementById(num).append(new_edit_btn);
 }
 
 function delete_todo(del_num) {
