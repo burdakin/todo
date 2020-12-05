@@ -3,13 +3,16 @@ var array_id = 1;
 var del_num = 0;
 
 function add_to_array() {
-    let id_num = array_id++;
-    let todo_parse = document.getElementById('todo_text').value;
-    todo_array.push({id_num,todo_parse});
-    document.getElementById('todo_text').value = '';
-    storage();
-    render();
-
+    if (document.getElementById('todo_text').value.length !== 0) {
+        let id_num = array_id++;
+        let todo_parse = document.getElementById('todo_text').value;
+        todo_array.push({id_num, todo_parse});
+        document.getElementById('todo_text').value = '';
+        storage();
+        render();
+    } else {
+        alert('Введите задачу')
+    }
 }
 
 function render (){
