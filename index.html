@@ -9,7 +9,7 @@
 <body onload="render_from_storage()">
 
 <h1>Todo!</h1>
-<div class="block">
+<div class="input_container">
 <form class="todo" onsubmit="return false">
     <!-- <input type="checkbox" class="todo_check"> -->
     <input type="text" id="todo_text"><br>
@@ -18,6 +18,10 @@
     <!-- <button class="edit" onclick="edit_todo()">Редактировать</button> -->
     <button class="clear_list" onclick="lstorage_clr()">Стереть список</button>
 </form>
+</div>
+
+<div id="results">
+
 </div>
 
 

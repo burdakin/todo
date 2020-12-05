@@ -25,7 +25,7 @@ function render (){
         del_num = array_data_id;
         let array_data_text = todo_array[i].todo_parse;
         new_todo.innerHTML = '<b>' + array_data_id++ + ': ' + array_data_text + '</b>';
-        document.body.append(new_todo);
+        document.getElementById('results').append(new_todo);
         add_del_btn(del_num);
         add_edit_btn(del_num);
     }
@@ -60,7 +60,7 @@ function render_from_storage() {
             del_num = array_data_id;
             let array_data_text = todo_array[i].todo_parse;
             new_todo.innerHTML = '<b>' + array_data_id++ + ': ' + array_data_text + '</b>';
-            document.body.append(new_todo);
+            document.getElementById('results').append(new_todo);
             array_id = array_data_id;
             add_del_btn(del_num);
             add_edit_btn(del_num);
@@ -87,6 +87,7 @@ function add_del_btn(num) {
     let new_del_btn = document.createElement('button');
     new_del_btn.value = "delete";
     new_del_btn.id = 'del_btn';
+    new_del_btn.className = 'del_btn';
     new_del_btn.setAttribute('onclick', 'delete_todo'+'(' + num + ')');
     new_del_btn.innerHTML = 'oodalee'
     document.getElementById(num).append(new_del_btn);
@@ -117,6 +118,7 @@ function add_edit_btn(num) {
     let new_edit_btn = document.createElement('button');
     new_edit_btn.value = "edit";
     new_edit_btn.id = 'edit_btn'+num;
+    new_edit_btn.className = 'edit_btn';
     new_edit_btn.setAttribute('onclick', 'edit_todo1'+'(' + num + ')');
     new_edit_btn.innerHTML = 'edit'
     document.getElementById(num).append(new_edit_btn);
@@ -125,6 +127,7 @@ function add_edit_btn(num) {
 function edit_todo1(num) {
     let edit_input = document.createElement("input");
     edit_input.placeholder = 'отредактируйте задачу';
+    edit_input.className = 'edit_input';
     edit_input.id = ('edit_input'+num);
     edit_input.setAttribute(onsubmit, 'edit_input_close' + '(' + num + ')'); //изменить название функции//
     document.getElementById(num).append(edit_input);

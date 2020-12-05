@@ -2,15 +2,15 @@ body {
     width: 800px;
     height: 100%;
     margin: 0 auto;
-    background-color: antiquewhite;
+    background-color: #1c4147;
 }
 
 h1 {
     text-align: center;
+    color: #eaea6b;
 }
 
 form {
-
     width: 400px;
     margin: 0 auto;
 }
@@ -20,12 +20,49 @@ input {
 }
 
 .new_todo {
-    color: red;
+    color: #ffffff;
     text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    height: auto;
+    background-color: #478888;
+    margin-top: 30px;
+    padding-bottom: 25px;
+}
+
+.new_todo b {
+    position: relative;
+    top: 12px;
 }
 
 button {
     margin-right: 50px;
     margin-left: 50px;
     margin-top: 10px;
+}
+
+.del_btn {
+    color: purple;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 10px;
+    position: absolute;
+    left: 800px;
+}
+
+.edit_btn {
+    color: purple;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    position: absolute;
+    left: 900px;
+}
+
+.edit_input {
+    position: absolute;
+    left: 1000px;
+    width: 300px;
+    height: 36px;
 }
