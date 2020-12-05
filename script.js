@@ -58,6 +58,7 @@ function render_from_storage() {
             let array_data_text = todo_array[i].todo_parse;
             new_todo.innerHTML = '<b>' + array_data_id++ + ': ' + array_data_text + '</b>';
             document.body.append(new_todo);
+            array_id = array_data_id;
             add_del_btn(del_num);
             add_edit_btn(del_num);
         }
