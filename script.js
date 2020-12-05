@@ -168,7 +168,7 @@ function add_to_done(num) {
     let array_data_id = done_array[done_array.length - 1].id_done;
     done.id = array_data_id;
     let array_data_text = done_array[done_array.length - 1].text_done;
-    done.innerHTML = '<b>' + num + ': ' + array_data_text + '</b>';
+    done.innerHTML = '<i>' + num + ': ' + array_data_text + '</i>';
     document.getElementById('done').append(done);
     delete_todo(num);
 }
