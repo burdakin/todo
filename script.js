@@ -6,6 +6,7 @@ function add_to_array() {
     let id_num = array_id++;
     let todo_parse = document.getElementById('todo_text').value;
     todo_array.push({id_num,todo_parse});
+    document.getElementById('todo_text').value = '';
     storage();
     render();
 
@@ -58,6 +59,7 @@ function render_from_storage() {
             new_todo.innerHTML = '<b>' + array_data_id++ + ': ' + array_data_text + '</b>';
             document.body.append(new_todo);
             add_del_btn(del_num);
+            add_edit_btn(del_num);
         }
     } else {
         todo_array = []
