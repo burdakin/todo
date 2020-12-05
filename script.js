@@ -33,7 +33,6 @@ function render() {
     }
 }
 
-
 function delete_old_render() {
     document.querySelectorAll('.new_todo').forEach(function (a) {
             a.remove();
@@ -47,6 +46,7 @@ function storage() {
 }
 
 function render_from_storage() {
+    document.getElementById('done').style.visibility = 'hidden';
     todo_array = (JSON.parse(window.localStorage.getItem('todo_list')));
     array_id = 1;
     if (todo_array !== null) {
@@ -84,11 +84,11 @@ function lstorage_clr() {
         )
     }
     ;
-
     window.localStorage.clear();
     todo_array = [];
     array_id = 1;
     render();
+    document.getElementById('done').style.visibility = 'hidden';
 }
 
 function add_del_btn(num) {
@@ -127,7 +127,8 @@ function edit_todo(num) {
     edit_input.setAttribute(onsubmit, 'edit_input_close' + '(' + num + ')');
     document.getElementById(num).append(edit_input);
     let edit_btn = document.getElementById('edit_btn' + num);
-    edit_btn.setAttribute('onclick', 'edit_input_close(' + num + ')')
+    edit_btn.setAttribute('onclick', 'edit_input_close(' + num + ')');
+    edit_btn.innerHTML = 'Сохранить';
 }
 
 function edit_input_close(num) {
@@ -154,6 +155,7 @@ function add_check(num) {
 }
 
 function add_to_done(num) {
+    document.getElementById('done').style.visibility = 'visible';
     let index = todo_array.findIndex(i => i.id_num === num);
     let id_done = num;
     let text_done = todo_array[index].todo_parse;
@@ -166,7 +168,7 @@ function add_to_done(num) {
     let array_data_id = done_array[done_array.length - 1].id_done;
     done.id = array_data_id;
     let array_data_text = done_array[done_array.length - 1].text_done;
-    done.innerHTML = '<b>' + index + ': ' + array_data_text + '</b>';
+    done.innerHTML = '<b>' + num + ': ' + array_data_text + '</b>';
     document.getElementById('done').append(done);
     delete_todo(num);
 }
