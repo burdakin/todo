@@ -25,7 +25,7 @@ input {
 .new_todo {
     color: #ffffff;
     text-align: center;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     height: auto;
     background-color: #478888;
@@ -45,27 +45,29 @@ button {
 }
 
 .del_btn {
-    color: purple;
+    color: white;
+    background-color: #346067;
     margin-right: 15px;
     margin-left: 15px;
     margin-top: 10px;
     position: absolute;
-    left: 800px;
+    left: 795px;
 }
 
 .edit_btn {
-    color: purple;
+    color: white;
+    background-color: #346067;
     margin-right: 15px;
     margin-left: 15px;
     margin-top: 10px;
     margin-bottom: 15px;
     position: absolute;
-    left: 900px;
+    left: 880px;
 }
 
 .edit_input {
     position: absolute;
-    left: 1000px;
+    left: 1043px;
     width: 300px;
     height: 36px;
 }

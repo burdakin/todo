@@ -89,7 +89,7 @@ function add_del_btn(num) {
     new_del_btn.id = 'del_btn';
     new_del_btn.className = 'del_btn';
     new_del_btn.setAttribute('onclick', 'delete_todo'+'(' + num + ')');
-    new_del_btn.innerHTML = 'oodalee'
+    new_del_btn.innerHTML = 'Удалить'
     document.getElementById(num).append(new_del_btn);
 }
 
@@ -120,7 +120,7 @@ function add_edit_btn(num) {
     new_edit_btn.id = 'edit_btn'+num;
     new_edit_btn.className = 'edit_btn';
     new_edit_btn.setAttribute('onclick', 'edit_todo1'+'(' + num + ')');
-    new_edit_btn.innerHTML = 'edit'
+    new_edit_btn.innerHTML = 'Редактировать'
     document.getElementById(num).append(new_edit_btn);
 }
 
