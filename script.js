@@ -89,15 +89,6 @@ function add_del_btn(num) {
     document.getElementById(num).append(new_del_btn);
 }
 
-function add_edit_btn(num) {
-    let new_edit_btn = document.createElement('button');
-    new_edit_btn.value = "edit";
-    new_edit_btn.id = 'edit_btn';
-    //new_edit_btn.setAttribute('onclick', 'edit_todo'+'(' + num + ')');//
-    new_edit_btn.innerHTML = 'edit'
-    document.getElementById(num).append(new_edit_btn);
-}
-
 function delete_todo(del_num) {
     todo_array.splice(del_num,1);
     array_id = 0;
@@ -118,6 +109,36 @@ function edit_todo() {
     storage();
 }
 
-function edit_todo1(index) {
+
+function add_edit_btn(num) {
+    let new_edit_btn = document.createElement('button');
+    new_edit_btn.value = "edit";
+    new_edit_btn.id = 'edit_btn'+num;
+    new_edit_btn.setAttribute('onclick', 'edit_todo1'+'(' + num + ')');
+    new_edit_btn.innerHTML = 'edit'
+    document.getElementById(num).append(new_edit_btn);
+}
+
+function edit_todo1(num) {
+    let edit_input = document.createElement("input");
+    edit_input.placeholder = 'отредактируйте задачу';
+    edit_input.id = ('edit_input'+num);
+    edit_input.setAttribute(onsubmit, 'edit_input_close' + '(' + num + ')'); //изменить название функции//
+    document.getElementById(num).append(edit_input);
+    let edit_btn = document.getElementById('edit_btn'+num);
+    edit_btn.setAttribute('onclick', 'edit_input_close('+ num + ')')
+
 
 }
+
+function edit_input_close(num) {
+    let edit_close = document.getElementById('edit_input'+num);
+    edit_close.remove();
+    let edit_btn = document.getElementById('edit_btn'+num);
+    edit_btn.setAttribute('onclick', 'edit_todo1'+'(' + num + ')')
+    /*render();
+    storage();
+     */
+}
+
+/*функция для получения текста и id по индексу массива, вставки текста в placeholder инпута, замены его в массиве*/
