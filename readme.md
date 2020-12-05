@@ -11,4 +11,4 @@ _HOW TO USE_
 
 _NOTE_ 
 
-Your tasks are stored on the local storage of your device. When page is loaded, your old TODOs will appear on a page. You may clear the TODO list via the _Стереть список_ button.
+Your tasks are stored on the local storage of your device. When page is loaded, your old TODOs will appear on a page. You may clear the TODO list via the _Очистить список_ button.

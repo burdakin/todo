@@ -121,7 +121,7 @@ function add_edit_btn(num) {
 
 function edit_todo(num) {
     let edit_input = document.createElement("input");
-    edit_input.placeholder = 'отредактируйте задачу';
+    edit_input.placeholder = 'Отредактируйте задачу';
     edit_input.className = 'edit_input';
     edit_input.id = ('edit_input' + num);
     edit_input.setAttribute(onsubmit, 'edit_input_close' + '(' + num + ')');
