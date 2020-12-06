@@ -160,7 +160,6 @@ function add_to_done(num) {
     let id_done = num;
     let text_done = todo_array[index].todo_parse;
     done_array.push({id_done, text_done});
-    //засунуть в другую функцию или переделать старую под параметр//
     let store_todo = JSON.stringify(done_array);
     localStorage.setItem('done_list', store_todo);
     let done = document.createElement('div');
