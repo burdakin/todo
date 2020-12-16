@@ -30,12 +30,7 @@ form {
     height: auto;
     background-color: #478888;
     margin-top: 30px;
-    padding-bottom: 25px;
-}
-
-.new_todo b {
-    position: relative;
-    top: 12px;
+    padding-bottom: 10px;
 }
 
 button {
@@ -50,8 +45,8 @@ button {
     margin-right: 15px;
     margin-left: 15px;
     margin-top: 10px;
-    position: absolute;
-    left: 795px;
+    position: relative;
+    left: 145px;
 }
 
 .edit_btn {
@@ -60,9 +55,8 @@ button {
     margin-right: 15px;
     margin-left: 15px;
     margin-top: 10px;
-    margin-bottom: 15px;
-    position: absolute;
-    left: 880px;
+    position: relative;
+    left: 130px;
 }
 
 .edit_input {
@@ -73,8 +67,8 @@ button {
 }
 
 .checkbox {
-    position: absolute;
-    left: 440px;
+    position: relative;
+    left: -440px;
     margin-top: 14px;
 }
 
